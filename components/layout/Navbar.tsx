@@ -2,29 +2,65 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+    <nav className="
+sticky top-0
+z-50
+bg-[#0B1F3A]/80
+backdrop-blur-xl
+border-b border-white/10
+shadow-2xl
+">
+  <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-24">
 
-        <Image
-          src="/logo.png"
-          alt="SR Electrical"
-          width={140}
-          height={50}
-        />
+    <Image
+      src="/logo.png"
+      alt="SR Electrical"
+      width={170}
+      height={70}
+    />
 
-        <ul className="hidden md:flex gap-8 font-medium">
-          <li>Home</li>
-          <li>About</li>
-          <li>Services</li>
-          <li>Projects</li>
-          <li>Contact</li>
-        </ul>
+    <ul className="hidden md:flex gap-10 font-medium text-white">
 
-        <button className="bg-orange-500 text-white px-6 py-3 rounded-lg">
-          Get Quote
-        </button>
+      <li className="hover:text-[#FF6B00] transition cursor-pointer">
+        Home
+      </li>
 
-      </div>
-    </nav>
+      <li className="hover:text-[#FF6B00] transition cursor-pointer">
+        About
+      </li>
+
+      <li className="hover:text-[#FF6B00] transition cursor-pointer">
+        Services
+      </li>
+
+      <li className="hover:text-[#FF6B00] transition cursor-pointer">
+        Projects
+      </li>
+
+      <li className="hover:text-[#FF6B00] transition cursor-pointer">
+        Contact
+      </li>
+
+    </ul>
+
+    <button
+      className="
+      bg-[#FF6B00]
+      text-white
+      px-7
+      py-3
+      rounded-xl
+      font-semibold
+      hover:scale-105
+      hover:shadow-[0_0_25px_rgba(255,107,0,0.5)]
+      transition-all
+      duration-300
+      "
+    >
+      Get Free Consultation
+    </button>
+
+  </div>
+</nav>
   );
 }
