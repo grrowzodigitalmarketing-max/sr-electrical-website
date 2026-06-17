@@ -1,26 +1,17 @@
-export default function Projects() {
-  const projects = [
-    {
-      title: "Substation Installation",
-      location: "Indore",
-      image: "/projects/project1.jpg",
-    },
-    {
-      title: "Industrial Electrification",
-      location: "Bhopal",
-      image: "/projects/project2.jpg",
-    },
-    {
-      title: "Street Lighting Project",
-      location: "Ujjain",
-      image: "/projects/project3.jpg",
-    },
-    {
-      title: "Solar EPC Project",
-      location: "Dewas",
-      image: "/projects/project4.jpg",
-    },
-  ];
+import Link from "next/link";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+export default async function Projects() {
+  const { data: projects } = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(8);
 
   return (
     <section className="py-20 bg-slate-100">
@@ -38,13 +29,17 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          {projects.map((project, index) => (
-            <div
-              key={index}
+          {projects?.map((project) => (
+            <Link
+              key={project.id}
+              href={`/project/${project.slug}`}
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
             >
               <img
-                src={project.image}
+                src={
+                  project.cover_image ||
+                  "https://placehold.co/600x400"
+                }
                 alt={project.title}
                 className="h-56 w-full object-cover"
               />
@@ -58,7 +53,7 @@ export default function Projects() {
                   {project.location}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
 
         </div>

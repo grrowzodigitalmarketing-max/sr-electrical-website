@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="
@@ -33,9 +33,9 @@ shadow-2xl
         Services
       </li>
 
-      <li className="hover:text-[#FF6B00] transition cursor-pointer">
-        Projects
-      </li>
+      <Link href="/projects">
+  Projects
+</Link>
 
       <li className="hover:text-[#FF6B00] transition cursor-pointer">
         Contact
