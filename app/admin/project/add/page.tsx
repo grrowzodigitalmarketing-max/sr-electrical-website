@@ -67,22 +67,32 @@ let galleryUrls: string[] = [];
   }
   console.log("Cover URL:", coverUrl);
 console.log("Gallery URLs:", galleryUrls);
-    const { error } = await supabase
-      .from("projects")
-      .insert([
-  {
-    ...form,
-    slug,
-    cover_image: coverUrl,
-    gallery_images: galleryUrls,
-  },
-]);
+    const { data, error } = await supabase
+  .from("projects")
+  .insert([
+    {
+      ...form,
+      slug,
+      cover_image: coverUrl,
+      gallery_images: galleryUrls,
+    },
+  ])
+  .select();
+
+console.log("INSERT DATA:", data);
+console.log("INSERT ERROR:", error);
 
     if (error) {
-      alert(error.message);
-    } else {
-      alert("Project Added Successfully");
-    }
+  console.log(error);
+  alert(error.message);
+} else {
+  console.log(data);
+
+  alert("Project Added Successfully");
+
+  window.location.href =
+    "/admin/dashboard";
+}
   };
 
   return (
