@@ -9,13 +9,7 @@ const supabase = createClient(
 );
 
 export default async function Dashboard() {
-const {
-  data: { session },
-} = await supabase.auth.getSession();
 
-if (!session) {
-  redirect("/admin/login");
-}
   const { data: projects } = await supabase
     .from("projects")
     .select("*");

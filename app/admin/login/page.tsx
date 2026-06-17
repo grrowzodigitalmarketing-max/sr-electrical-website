@@ -1,24 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 
 export default function AdminLogin() {
   const router = useRouter();
-useEffect(() => {
-  checkUser();
-}, []);
 
-const checkUser = async () => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
 
-  if (session) {
-    router.push("/admin/dashboard");
-  }
-};
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,8 +27,7 @@ const checkUser = async () => {
   if (error) {
     alert(error.message);
   } else {
-    alert("Login Success");
-    router.push("/admin/dashboard");
+    router.replace("/admin/dashboard");
   }
 };
   return (
