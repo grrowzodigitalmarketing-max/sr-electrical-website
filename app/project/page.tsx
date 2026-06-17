@@ -1,5 +1,4 @@
-"use client";
-import { useState } from "react";
+
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 export const metadata = {
@@ -7,7 +6,7 @@ export const metadata = {
   description:
     "Industrial, Government, Hospital & Infrastructure Electrical Projects completed by SR Electrical & Contractor.",
 };
-const [search, setSearch] = useState("");
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -47,28 +46,17 @@ export default async function ProjectsPage() {
 
         </div>
       </section>
-<div className="mb-10">
-  <input
-    type="text"
-    placeholder="Search Projects..."
-    value={search}
-    onChange={(e) => setSearch(e.target.value)}
-    className="w-full border p-4 rounded-xl"
-  />
-</div>
+
       {/* Categories */}
 
       <section className="max-w-7xl mx-auto px-6 py-12">
 
         {categories.map((category) => {
 
-          const categoryProjects =
+         const categoryProjects =
   projects?.filter(
     (project) =>
-      project.category === category &&
-      project.title
-        .toLowerCase()
-        .includes(search.toLowerCase())
+      project.category === category
   ) || [];
           if (categoryProjects.length === 0)
             return null;
