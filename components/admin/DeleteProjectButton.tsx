@@ -16,10 +16,14 @@ export default function DeleteProjectButton({
 
     if (!confirmDelete) return;
 
-    const { error } = await supabase
-      .from("projects")
-      .delete()
-      .eq("id", id);
+    const { data, error } = await supabase
+  .from("projects")
+  .delete()
+  .eq("id", id)
+  .select();
+
+console.log("DELETE DATA:", data);
+console.log("DELETE ERROR:", error);
 
     if (error) {
       alert(error.message);
