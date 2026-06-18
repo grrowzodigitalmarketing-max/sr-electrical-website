@@ -11,9 +11,9 @@ const supabase = createClient(
 export default async function ProjectPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const slug = params.slug;
   
 
   const { data: project, error } = await supabase
@@ -21,7 +21,11 @@ export default async function ProjectPage({
     .select("*")
     .eq("slug", slug)
     .single();
-    
+    console.log("SLUG:", slug);
+
+console.log("PROJECT:", project);
+
+console.log("ERROR:", error);
 
 
   if (error || !project) {
