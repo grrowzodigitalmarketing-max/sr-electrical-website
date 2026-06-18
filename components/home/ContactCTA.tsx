@@ -1,6 +1,6 @@
 export default function ContactCTA() {
   return (
-    <section className="bg-[#0B1F3A] py-20 text-white">
+    <section id="contact" className="bg-[#0B1F3A] py-20 text-white">
 
       <div className="max-w-7xl mx-auto px-6 text-center">
 

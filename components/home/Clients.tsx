@@ -1,46 +1,51 @@
 export default function Clients() {
-  const clients = [
-    "Government Projects",
-    "Industrial Clients",
-    "Commercial Clients",
-    "Infrastructure Projects",
-    "Private Sector",
-  ];
+const clients = [
+"/clients/mp-tourism.png",
+"/clients/lupin.png",
+"/clients/mpbdc.png",
+"/clients/elysium.png",
+"/clients/alembic.png",
+"/clients/cadila.png",
+"/clients/baroda-heart.png",
+];
 
-  return (
-    <section className="py-20 bg-slate-50">
+return ( <section className="py-20 bg-slate-50">
+   <div className="max-w-7xl mx-auto px-6">
 
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-12">
+      <span className="text-[#FF6B00] font-semibold">
+        TRUSTED CLIENTS
+      </span>
 
-        <div className="text-center mb-12">
+      <h2 className="text-4xl font-bold mt-3">
+        Organizations We Have Served
+      </h2>
 
-          <span className="text-[#FF6B00] font-semibold">
-            OUR CLIENTS
-          </span>
+      <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
+        Delivering reliable electrical infrastructure
+        solutions for government departments,
+        healthcare institutions, pharmaceutical
+        companies and industrial organizations.
+      </p>
+    </div>
 
-          <h2 className="text-4xl font-bold mt-3">
-            Trusted By Leading Organizations
-          </h2>
-
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
+      {clients.map((logo, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition duration-300 flex items-center justify-center h-32"
+        >
+          <img
+            src={logo}
+            alt="Client Logo"
+            className="max-h-[70px] w-auto object-contain grayscale hover:grayscale-0 transition"
+          />
         </div>
+      ))}
+    </div>
 
-        <div className="grid md:grid-cols-5 gap-6">
+  </div>
+</section>
 
-          {clients.map((client, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-8 text-center shadow"
-            >
-              <h3 className="font-semibold">
-                {client}
-              </h3>
-            </div>
-          ))}
-
-        </div>
-
-      </div>
-
-    </section>
-  );
+);
 }

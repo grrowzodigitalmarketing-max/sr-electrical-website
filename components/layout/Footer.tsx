@@ -61,7 +61,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10 text-center py-5">
-        © 2026 SR Electrical & Contractor
+        © 2020 SR Electrical & Contractor Devloped by Grrowzo
       </div>
 
     </footer>

@@ -1,3 +1,4 @@
+
 export const dynamic = "force-dynamic";
 import { createClient } from "@supabase/supabase-js";
 import Image from "next/image";
@@ -11,16 +12,19 @@ const supabase = createClient(
 export default async function ProjectPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const slug = params.slug;
-  
+  const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
 
-  const { data: project, error } = await supabase
-    .from("projects")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+console.log("SLUG:", slug);
+console.log("DECODED:", decodedSlug);
+
+const { data: project, error } = await supabase
+  .from("projects")
+  .select("*")
+  .eq("slug", decodedSlug)
+  .single();
     console.log("SLUG:", slug);
 
 console.log("PROJECT:", project);

@@ -22,9 +22,10 @@ const [galleryImages, setGalleryImages] = useState<FileList | null>(null);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const slug = form.title
-      .toLowerCase()
-      .replaceAll(" ", "-");
+   const slug = form.title
+  .toLowerCase()
+  .replace(/[^a-z0-9\s-]/g, "")
+  .replace(/\s+/g, "-");
       let coverUrl = "";
 let galleryUrls: string[] = [];
 // COVER IMAGE UPLOAD
