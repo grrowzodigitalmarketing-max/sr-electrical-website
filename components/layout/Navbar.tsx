@@ -1,7 +1,11 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <nav
       className="
@@ -63,28 +67,91 @@ export default function Navbar() {
 </li>
 
         </ul>
+        <button
+  onClick={() => setIsOpen(!isOpen)}
+  className="lg:hidden text-white"
+>
+  {isOpen ? <X size={30} /> : <Menu size={30} />}
+</button>
 
         <a
-        href="https://wa.me/919099800196"
-  target="_blank"
-          
-          className="
-          bg-[#FF6B00]
-          text-white
-          px-7
-          py-3
-          rounded-xl
-          font-semibold
-          hover:scale-105
-          hover:shadow-[0_0_25px_rgba(255,107,0,0.5)]
-          transition-all
-          duration-300
-          "
-        >
-          Get Free Consultation
-        </a>
-
+  href="tel:+919099800196"
+  className="
+  hidden lg:block
+  bg-[#FF6B00]
+  text-white
+  px-7
+  py-3
+  rounded-xl
+  font-semibold
+  hover:scale-105
+  transition-all
+  "
+>
+  Get Free Consultation
+</a>
       </div>
+      {isOpen && (
+  <div
+    className="
+    lg:hidden
+    bg-[#0B1F3A]
+    border-t border-white/10
+    "
+  >
+    <div className="flex flex-col p-6 space-y-5 text-white">
+
+      <Link
+        href="/"
+        onClick={() => setIsOpen(false)}
+      >
+        Home
+      </Link>
+
+      <Link
+        href="/#about"
+        onClick={() => setIsOpen(false)}
+      >
+        About
+      </Link>
+
+      <Link
+        href="/#services"
+        onClick={() => setIsOpen(false)}
+      >
+        Services
+      </Link>
+
+      <Link
+        href="/projects"
+        onClick={() => setIsOpen(false)}
+      >
+        Projects
+      </Link>
+
+      <Link
+        href="/#contact"
+        onClick={() => setIsOpen(false)}
+      >
+        Contact
+      </Link>
+
+      <a
+        href="tel:+919099800196"
+        className="
+        bg-[#FF6B00]
+        text-center
+        py-3
+        rounded-lg
+        font-semibold
+        "
+      >
+        Get Free Consultation
+      </a>
+
+    </div>
+  </div>
+)}
     </nav>
   );
 }
