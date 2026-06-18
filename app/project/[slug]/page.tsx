@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { createClient } from "@supabase/supabase-js";
 import Image from "next/image";
 import { notFound } from "next/navigation";

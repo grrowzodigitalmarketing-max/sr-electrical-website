@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import DeleteProjectButton from "@/components/admin/DeleteProjectButton";
@@ -9,11 +10,15 @@ const supabase = createClient(
 );
 
 export default async function Dashboard() {
+  console.log(
+    "TIME:",
+    new Date().toISOString()
+  );
 
   const { data: projects } = await supabase
     .from("projects")
     .select("*");
-
+console.log("PROJECTS:", projects);
   const totalProjects = projects?.length || 0;
 
   const industrialProjects =
