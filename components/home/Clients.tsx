@@ -46,6 +46,5 @@ return ( <section className="py-20 bg-slate-50">
 
   </div>
 </section>
-
 );
 }

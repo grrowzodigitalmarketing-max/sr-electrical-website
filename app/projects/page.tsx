@@ -1,4 +1,4 @@
-
+export const dynamic = "force-dynamic";
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 export const metadata = {
@@ -18,7 +18,16 @@ export default async function ProjectsPage() {
     .from("projects")
     .select("*")
     .order("created_at", { ascending: false });
+console.log("PROJECT COUNT:", projects?.length);
 
+console.log(
+  "PROJECTS:",
+  projects?.map((p) => ({
+    title: p.title,
+    slug: p.slug,
+    category: p.category,
+  }))
+);
   const categories = [
     "Completed Key Projects",
     "Industrial Projects",
